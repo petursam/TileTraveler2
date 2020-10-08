@@ -84,15 +84,25 @@ def play_one_move(col, row, valid_directions, amount_of_coins):
             amount_of_coins = pull_a_lever(amount_of_coins)
     return victory, col, row, amount_of_coins
 
+def again():
+    play_again = input("Play again (y/n): ")
+    play_again.lower()
+    if play_again == "y":
+        play()
+    else:
+        None
 # The main program starts here
-victory = False
-row = 1
-col = 1
-amount_of_coins = 0
+def play():
+    victory = False
+    row = 1
+    col = 1
+    amount_of_coins = 0
 
-while not victory:
-    valid_directions = find_directions(col, row)
-    print_directions(valid_directions)
-    victory, col, row, amount_of_coins = play_one_move(col, row, valid_directions,amount_of_coins)
+    while not victory:
+        valid_directions = find_directions(col, row)
+        print_directions(valid_directions)
+        victory, col, row, amount_of_coins = play_one_move(col, row, valid_directions,amount_of_coins)
         
-print("Victory! Total coins {}.".format(amount_of_coins))
+    print("Victory! Total coins {}.".format(amount_of_coins))
+    again()
+play()
